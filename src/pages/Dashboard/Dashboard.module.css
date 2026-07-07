@@ -1,0 +1,30 @@
+.header { margin-bottom: 22px; }
+.header h2 { font-size: 22px; font-weight: 700; }
+.subtitle { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+
+.errorBanner {
+  background: var(--danger-dim); color: var(--danger); padding: 10px 14px;
+  border-radius: 8px; font-size: 13px; margin-bottom: 16px;
+}
+
+.statGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+@media (max-width: 900px) { .statGrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .statGrid { grid-template-columns: 1fr; } }
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 900px) { .row { grid-template-columns: 1fr; } }
+
+.panel { padding: 20px; }
+.panelHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.panelHeader h3 { font-size: 15px; font-weight: 600; }
+
+.list { display: flex; flex-direction: column; gap: 10px; max-height: 280px; overflow-y: auto; }
+.listItem {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  padding: 10px 12px; background: var(--bg); border-radius: 8px; font-size: 13px;
+}
+.txTitle { margin-left: 8px; }
+.muted { color: var(--muted); font-size: 12px; }
+.dueDate { color: var(--danger); font-size: 12px; font-weight: 600; white-space: nowrap; }
+.emptyText { color: var(--muted); font-size: 13px; padding: 16px 0; }
+.note { font-size: 11px; color: var(--muted); font-style: italic; margin-top: 12px; }

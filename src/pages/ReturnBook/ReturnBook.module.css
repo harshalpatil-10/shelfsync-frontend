@@ -1,0 +1,18 @@
+.wrap { max-width: 560px; }
+.header { margin-bottom: 20px; }
+.header h2 { font-size: 22px; font-weight: 700; }
+.subtitle { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+.errorBanner { background: var(--danger-dim); color: var(--danger); padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; }
+.card { padding: 24px; }
+.emptyText { color: var(--muted); font-size: 13.5px; margin-top: 14px; }
+.loanList { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+.loanItem {
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--bg); border-radius: 8px; padding: 12px 14px;
+}
+.meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.resultCard { margin-top: 20px; padding: 22px; }
+.resultCard h3 { font-size: 15px; margin-bottom: 14px; }
+.resultGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.viewLabel { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+.resultGrid p { font-size: 14px; margin-top: 2px; font-weight: 600; }

@@ -1,0 +1,16 @@
+.wrap { max-width: 520px; }
+.header { margin-bottom: 20px; }
+.header h2 { font-size: 22px; font-weight: 700; }
+.subtitle { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+.card { padding: 26px; }
+.avatarRow { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.avatar {
+  width: 56px; height: 56px; border-radius: 50%; background: var(--blue); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700;
+}
+.avatarRow h3 { font-size: 17px; font-weight: 700; }
+.role { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.infoGrid { display: grid; grid-template-columns: 1fr; gap: 16px; padding-top: 18px; border-top: 1px solid var(--border); }
+.label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+.infoGrid p { font-size: 14px; margin-top: 3px; font-weight: 500; }
+.note { font-size: 11.5px; color: var(--muted); font-style: italic; margin-top: 20px; line-height: 1.6; }

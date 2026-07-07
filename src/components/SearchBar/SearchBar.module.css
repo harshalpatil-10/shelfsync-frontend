@@ -1,0 +1,10 @@
+.wrap {
+  display: flex; align-items: center; gap: 8px; background: var(--surface);
+  border: 1.5px solid var(--border); border-radius: 8px; padding: 9px 12px;
+  max-width: 340px; transition: border-color 0.15s ease;
+}
+.wrap:focus-within { border-color: var(--blue); }
+.icon { font-size: 13px; opacity: 0.6; }
+.input { flex: 1; border: none; outline: none; background: transparent; font-size: 13.5px; color: var(--text); }
+.clear { background: none; border: none; color: var(--muted); font-size: 12px; }
+.clear:hover { color: var(--danger); }

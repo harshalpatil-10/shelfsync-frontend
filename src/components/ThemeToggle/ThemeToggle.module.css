@@ -1,0 +1,6 @@
+.toggle {
+  width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border);
+  background: var(--bg); font-size: 15px; display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s ease;
+}
+.toggle:hover { border-color: var(--blue); transform: rotate(15deg); }

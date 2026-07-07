@@ -1,0 +1,13 @@
+.header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; }
+.header h2 { font-size: 22px; font-weight: 700; }
+.subtitle { color: var(--muted); font-size: 13px; margin-top: 4px; }
+.actions { display: flex; gap: 10px; }
+.errorBanner { background: var(--danger-dim); color: var(--danger); padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; }
+.filters { display: flex; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+.select {
+  padding: 9px 12px; border-radius: 8px; border: 1.5px solid var(--border);
+  background: var(--surface); color: var(--text); font-size: 13.5px;
+}
+.viewGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.viewLabel { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; font-weight: 600; }
+.viewGrid p { font-size: 14px; margin-top: 2px; }
