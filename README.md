@@ -45,6 +45,10 @@ npm run build
 ```
 Outputs to `dist/` — deploy this folder to Vercel, Netlify, or any static host.
 
+## Latest Update
+
+Minor documentation improvement.
+
 ## Project Structure
 
 ```
