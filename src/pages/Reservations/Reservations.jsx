@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Loader from '../../components/Loader/Loader.jsx'
-import EmptyState from '../../components/EmptyState/EmptyState.jsx'
 import { bookService } from '../../services/bookService.js'
 import { reservationService } from '../../services/reservationService.js'
 import { memberService } from '../../services/memberService.js'
@@ -72,8 +71,10 @@ export default function Reservations() {
       {success && <div className={styles.successBanner}>{success}</div>}
 
       {books.length === 0 ? (
-        <EmptyState icon="📚" title="No books need reservations" subtitle="Every book currently has copies available." />
-      ) : (
+  <div className="card" style={{ padding: '40px 20px', textAlign: 'center' }}>
+    <p style={{ fontSize: 14, color: 'var(--muted)' }}>No books need reservations — every book currently has copies available.</p>
+  </div>
+) : (
         <div className={styles.grid}>
           <div className="card" style={{ padding: 20 }}>
             <h3 style={{ fontSize: 15, marginBottom: 14 }}>Fully Booked Titles</h3>
