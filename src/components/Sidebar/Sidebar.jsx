@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { to: '/students', label: 'Students', icon: '🎓' },
   { to: '/issue', label: 'Issue Book', icon: '➡️' },
   { to: '/return', label: 'Return Book', icon: '⬅️' },
+  { to: '/reservations', label: 'Reservations', icon: '⏳' },
   { to: '/profile', label: 'Profile', icon: '👤' },
 ]
 
