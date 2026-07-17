@@ -11,6 +11,7 @@ import Profile from './pages/Profile/Profile.jsx'
 import NotFound from './pages/NotFound/NotFound.jsx'
 import MainLayout from './layouts/MainLayout.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
+import Reservations from './pages/Reservations/Reservations.jsx'
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/issue" element={<IssueBook />} />
         <Route path="/return" element={<ReturnBook />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/reservations" element={<Reservations />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
