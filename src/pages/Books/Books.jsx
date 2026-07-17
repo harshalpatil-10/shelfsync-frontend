@@ -8,6 +8,7 @@ import Loader from '../../components/Loader/Loader.jsx'
 import { bookService } from '../../services/bookService.js'
 import { exportToExcel } from '../../utils/exportUtils.js'
 import styles from './Books.module.css'
+import { bookLookupService } from '../../services/bookLookupService.js'
 
 const PAGE_SIZE = 8
 const EMPTY_FORM = { title: '', author: '', isbn: '', genre: '', totalCopies: 1 }
@@ -26,6 +27,8 @@ export default function Books() {
   const [activeBook, setActiveBook] = useState(null)
   const [deleteTarget, setDeleteTarget] = useState(null)
   const [saving, setSaving] = useState(false)
+  const [lookingUp, setLookingUp] = useState(false)
+  const [lookupError, setLookupError] = useState('')
 
   useEffect(() => { loadBooks() }, [])
 
@@ -112,6 +115,24 @@ export default function Books() {
       setDeleteTarget(null)
     }
   }
+  
+  async function handleIsbnLookup() {
+  if (!form.isbn.trim()) { setLookupError('Enter an ISBN first.'); return }
+  setLookingUp(true); setLookupError('')
+  try {
+    const data = await bookLookupService.lookupByIsbn(form.isbn.trim())
+    setForm({
+      ...form,
+      title: data.title,
+      author: data.author,
+      genre: data.genre,
+    })
+  } catch (err) {
+    setLookupError(err.message)
+  } finally {
+    setLookingUp(false)
+  }
+}
 
   if (loading) return <Loader label="Loading books..." />
 
@@ -165,10 +186,16 @@ export default function Books() {
           {formErrors.author && <span className="error">{formErrors.author}</span>}
         </div>
         <div className="formfield">
-          <label>ISBN</label>
-          <input className={formErrors.isbn ? 'invalid' : ''} value={form.isbn} onChange={e => setForm({ ...form, isbn: e.target.value })} />
-          {formErrors.isbn && <span className="error">{formErrors.isbn}</span>}
-        </div>
+  <label>ISBN</label>
+  <div style={{ display: 'flex', gap: 8 }}>
+    <input className={formErrors.isbn ? 'invalid' : ''} value={form.isbn} onChange={e => setForm({ ...form, isbn: e.target.value })} style={{ flex: 1 }} />
+    <button type="button" className="btn btn-outline" onClick={handleIsbnLookup} disabled={lookingUp} style={{ whiteSpace: 'nowrap', padding: '0 14px' }}>
+      {lookingUp ? '...' : '🔍 Auto-fill'}
+    </button>
+  </div>
+  {lookupError && <span className="error">{lookupError}</span>}
+  {formErrors.isbn && <span className="error">{formErrors.isbn}</span>}
+</div>
         <div className="formfield">
           <label>Genre</label>
           <input className={formErrors.genre ? 'invalid' : ''} value={form.genre} onChange={e => setForm({ ...form, genre: e.target.value })} />
