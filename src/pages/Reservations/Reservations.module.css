@@ -1,0 +1,21 @@
+.errorBanner { background: var(--danger-dim); color: var(--danger); padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; }
+.successBanner { background: var(--success-dim); color: var(--success); padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+
+.bookList { display: flex; flex-direction: column; gap: 8px; }
+.bookItem {
+  display: flex; justify-content: space-between; align-items: center; text-align: left;
+  padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg);
+  font-size: 13.5px; font-weight: 500; transition: all 0.15s ease;
+}
+.bookItem:hover { border-color: var(--blue); }
+.bookItem.active { border-color: var(--blue); background: var(--blue-dim); }
+
+.queueList { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.queueList li { display: flex; align-items: center; gap: 10px; font-size: 13.5px; padding: 8px 0; }
+.position {
+  width: 22px; height: 22px; border-radius: 50%; background: var(--blue); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0;
+}
+.queueMeta { color: var(--muted); font-size: 11.5px; }
