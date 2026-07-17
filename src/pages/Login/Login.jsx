@@ -1,79 +1,50 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { login, isAuthenticated } from '../../utils/auth.js'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext.jsx'
 import styles from './Login.module.css'
 
 export default function Login() {
+  const { login } = useAuth()
   const navigate = useNavigate()
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  if (isAuthenticated()) {
-    navigate('/', { replace: true })
-  }
-
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     setError('')
-    if (!username.trim() || !password.trim()) {
-      setError('Please enter both username and password.')
-      return
-    }
     setLoading(true)
-    setTimeout(() => {
-      const success = login(username.trim(), password)
+    try {
+      await login(email, password)
+      navigate('/')
+    } catch (err) {
+      setError(err.message || 'Invalid email or password.')
+    } finally {
       setLoading(false)
-      if (success) {
-        navigate('/', { replace: true })
-      } else {
-        setError('Incorrect username or password.')
-      }
-    }, 400)
+    }
   }
 
   return (
     <div className={styles.page}>
       <div className={styles.card}>
-        <div className={styles.brand}>
-          <span className={styles.mark}>📖</span>
-          <h1>ShelfSync</h1>
-        </div>
-        <p className={styles.subtitle}>Library Management System</p>
-
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <h1 className={styles.title}>ShelfSync</h1>
+        <p className={styles.subtitle}>Log in to manage the library.</p>
+        <form onSubmit={handleSubmit}>
           <div className="formfield">
-            <label>Username</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="admin"
-              autoFocus
-            />
+            <label>Email</label>
+            <input type="email" value={email} onChange={e => setEmail(e.target.value)} autoFocus />
           </div>
           <div className="formfield">
             <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
-            />
+            <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
           </div>
-
-          {error && <p className={styles.error}>{error}</p>}
-
-          <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', padding: '12px 0', marginTop: '6px' }}>
-            {loading ? 'Signing in...' : 'Sign In'}
+          {error && <p className="error" style={{ marginBottom: 14 }}>{error}</p>}
+          <button type="submit" className="btn btn-primary" disabled={loading} style={{ width: '100%', padding: '12px 0' }}>
+            {loading ? 'Signing in...' : 'Log In'}
           </button>
         </form>
-
-        <p className={styles.hint}>Demo credentials: <b>admin</b> / <b>shelfsync123</b></p>
-        <p className={styles.note}>
-          This is a local demo login — the backend doesn't yet include an authentication endpoint.
-        </p>
+        <p className={styles.footerText}>No account? <Link to="/signup" className={styles.link}>Sign up</Link></p>
       </div>
     </div>
   )
