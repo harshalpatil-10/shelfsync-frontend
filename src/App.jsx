@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Login from './pages/Login/Login.jsx'
+import Signup from './pages/Signup/Signup.jsx'
 import Dashboard from './pages/Dashboard/Dashboard.jsx'
 import Books from './pages/Books/Books.jsx'
 import Students from './pages/Students/Students.jsx'
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
 
       <Route element={<ProtectedRoute><MainLayout /></ProtectedRoute>}>
         <Route path="/" element={<Dashboard />} />
